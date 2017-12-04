@@ -9,33 +9,51 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("О программе", "About", "Home")</li>
-                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
-                </ul>
-
-
-                @Html.Partial("_LoginPartial")
-
+<body onload="menuInit();">
+   <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+       @* <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
     </div>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
+            <li>@Html.ActionLink("О программе", "About", "Home")</li>
+            <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
+        </ul>*@ 
+    </div>
+    </div>
+                @Html.Partial("_LoginPartial")
+                       
+                    
+                    <nav id="navbar">
+                        <ul id="main-menu">
+                            <li><a href="#" target="_blank"><i class="fa fa-home"></i>Home</a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
+                            <li id="dropdown-item"><a href="#"><i class="fa fa-coffee"></i>Work With Me</a></li>
+                            <ul id="submenu" class="hide-submenu">
+                                <li>AngularJS</li>
+                                <li>JavaScript</li>
+                                <li>HTML5</li>
+                                <li>CSS3</li>
+                            </ul>
+                            <li><a href="#" target="_blank"><i class="fa fa-quote-left"></i>Testimonials</a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-user"></i>Contact</a></li>
+                        </ul><!-- main-menu -->
+                    </nav><!-- navbar -->
+               
+                <sidebar>
+               @RenderBody()
+
     <div class="container body-content">
-        @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year – Курсовой проект Банашко Александра по дисциплине "Веб-технологии"</p>
         </footer>
     </div>
 
@@ -44,3 +62,24 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<script>
+     function menuInit() {
+         var dropdown = document.getElementById("dropdown-item");
+         var submenu = document.getElementById("submenu");
+
+         dropdown.onmouseover = popOutMenu;
+         dropdown.onmouseout = hideDropdown;
+
+         submenu.onmouseover = popOutMenu;
+         submenu.onmouseout = hideDropdown;
+     }
+
+     function popOutMenu() {
+         submenu.className = "show-submenu";
+     }
+
+     function hideDropdown() {
+         submenu.className = "hide-submenu";
+     }
+</script>
