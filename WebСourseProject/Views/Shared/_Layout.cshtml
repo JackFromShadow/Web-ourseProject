@@ -7,59 +7,75 @@
     <title>@ViewBag.Title – приложение ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    @Html.Partial("_LoginPartial")
 </head>
 <body onload="menuInit();">
-   <div class="navbar navbar-inverse navbar-fixed-top">
+    <input type="checkbox" id="hmt" class="hidden-menu-ticker">
+    <label class="btn-menu" for="hmt">
+        <span class="first"></span>
+        <span class="second"></span>
+        <span class="third"></span>
+    </label>
+    <div class="sidebar">   
+        <nav id="navbar">
+            <ul id="main-menu">
+                <li><a href="#" target="_blank"><i class="fa fa-home"></i>Home</a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>@Html.ActionLink("ABOUT US", "About", "Home")</a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
+                <li id="dropdown-item"><a href="#"><i class="fa fa-coffee"></i>Work With Me</a></li>
+                <ul id="submenu" class="hide-submenu">
+                    <li>AngularJS</li>
+                    <li>JavaScript</li>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                </ul>
+                <li><a href="#" target="_blank"><i class="fa fa-quote-left"></i>Testimonials</a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-user"></i>Contact</a></li>
+            </ul><!-- main-menu -->
+        </nav><!-- navbar -->
+    </div>
+    <!-- body -->
+
     <div class="container">
-       @* <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-    </div>
-    <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-            <li>@Html.ActionLink("О программе", "About", "Home")</li>
-            <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
-        </ul>*@ 
-    </div>
-    </div>
-                @Html.Partial("_LoginPartial")
-                       
-                    
-                    <nav id="navbar">
-                        <ul id="main-menu">
-                            <li><a href="#" target="_blank"><i class="fa fa-home"></i>Home</a></li>
-                            <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
-                            <li id="dropdown-item"><a href="#"><i class="fa fa-coffee"></i>Work With Me</a></li>
-                            <ul id="submenu" class="hide-submenu">
-                                <li>AngularJS</li>
-                                <li>JavaScript</li>
-                                <li>HTML5</li>
-                                <li>CSS3</li>
-                            </ul>
-                            <li><a href="#" target="_blank"><i class="fa fa-quote-left"></i>Testimonials</a></li>
-                            <li><a href="#" target="_blank"><i class="fa fa-user"></i>Contact</a></li>
-                        </ul><!-- main-menu -->
-                    </nav><!-- navbar -->
-               
-                <sidebar>
-               @RenderBody()
+      
+        @*  <div class="hero-unit">
+            <h1>Marketing stuff!</h1>
 
-    <div class="container body-content">
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year – Курсовой проект Банашко Александра по дисциплине "Веб-технологии"</p>
-        </footer>
-    </div>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+            <a href="#" class="btn btn-large btn-success">Get Started</a>
+        </div>
+
+
+        <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
+                    <li>@Html.ActionLink("О программе", "About", "Home")</li>
+                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
+                </ul>*@
+
+        @RenderBody()
+    </div>
+            <div class="container body-content">
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year – Курсовой проект Банашко Александра по дисциплине "Веб-технологии"</p>
+                </footer>
+            </div>
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
 </body>
 </html>
 
