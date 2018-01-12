@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title – приложение ASP.NET</title>
@@ -10,92 +10,129 @@
     @Html.Partial("_LoginPartial")
 </head>
 <body onload="menuInit();">
-    <input type="checkbox" id="hmt" class="hidden-menu-ticker">
-    <label class="btn-menu" for="hmt">
-        <span class="first"></span>
-        <span class="second"></span>
-        <span class="third"></span>
-    </label>
-    <div class="sidebar">   
-        <nav id="navbar">
-            <ul id="main-menu">
-                <li><a href="#" target="_blank"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>@Html.ActionLink("ABOUT US", "About", "Home")</a></li>
-                <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
-                <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
-                <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
-                <li id="dropdown-item"><a href="#"><i class="fa fa-coffee"></i>Work With Me</a></li>
-                <ul id="submenu" class="hide-submenu">
-                    <li>AngularJS</li>
-                    <li>JavaScript</li>
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                </ul>
-                <li><a href="#" target="_blank"><i class="fa fa-quote-left"></i>Testimonials</a></li>
-                <li><a href="#" target="_blank"><i class="fa fa-user"></i>Contact</a></li>
-            </ul><!-- main-menu -->
-        </nav><!-- navbar -->
-    </div>
+   @* @if (User.IsInRole("Admin"))
+    {*@
+        <input type="checkbox" id="hmt" class="hidden-menu-ticker">
+        <label class="btn-menu" for="hmt">
+            <span class="first"></span>
+            <span class="second"></span>
+            <span class="third"></span>
+        </label>
+        <div class="sidebar">
+            <nav id="navbar">
+                <ul id="main-menu">
+                    <li><a href="#" target="_blank"><i class="fa fa-home"></i>Home</a></li>
+                    <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>@Html.ActionLink("ABOUT US", "About", "Home")</a></li>
+                    <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
+                    <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
+                    <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
+                    <li id="dropdown-item"><a href="#"><i class="fa fa-coffee"></i>Work With Me</a></li>
+                    <ul id="submenu" class="hide-submenu">
+                        <li>AngularJS</li>
+                        <li>JavaScript</li>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                    </ul>
+                    <li><a href="#" target="_blank"><i class="fa fa-quote-left"></i>Testimonials</a></li>
+                    <li><a href="#" target="_blank"><i class="fa fa-user"></i>Contact</a></li>
+                </ul><!-- main-menu -->
+            </nav><!-- navbar -->
+        </div>  
     <!-- body -->
+    <div class="wrap">
+        <!-- header -->
+        <header>
+            <div class="container">
+                <h1><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.IndexTitle1, "Index", "Home")</a></h1>
+                <form id="search-form"></form>
+                <nav>
+                    <ul>
+                        <li class="m1">@Html.ActionLink("Русский", "ChangeCulture", "Home", new { lang = "ru", returnUrl = this.Request.RawUrl }, null)</a></li>
+                        <li class="m2">@Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en", returnUrl = this.Request.RawUrl }, null)</a></li>
+                    </ul>
+                </nav>
+                @*Html.Partial("_LoginPartialUser", "Account")*@
+            </div>
+        </header>
+        <div class="container">
+            <!--Боковое меню. Главное меню?-->
+            <aside>
+                <h3>Меню</h3>
+                <ul class="categories">
+                    <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.TitleMainPage, "Index", "Home")</a></span></li>
+                    <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuNews, "News", "News")</a></span></li>
+                    @*<li><span><a href="#" target="_blank">@Html.ActionLink("Архив публикаций", "About", "Home")</a></span></li>*@
+                    <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuTimeTable, "TimeTableView", "Home")</a></span></li>
+                    <!--Верный способ указывать--> @if (User.IsInRole("User, ContentManager"))
+                    {
+                    <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuStudents, "StudentsView", "Home")</a></span></li>}
+                    @if (User.IsInRole("User, ContentManager"))
+                    {
+                    <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuTeachers, "TeachersView", "Home")</a></span></li>}
+                    @if (User.IsInRole("ContentManager"))
+                    {
+                    <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuSiteMap, "About", "Home")</a></span></li>}
+                    <li class="last"><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuAbout, "About", "Home")</a></span></li>
+                </ul>
+                <!--  <form action="" id="newsletter-form">
+                      <fieldset>
+                          <div class="rowElem">
+                              <h2>Newsletter</h2>
+                              <input type="email" value="Enter Your Email Here" onFocus="if(this.value=='Enter Your Email Here'){this.value=''}" onBlur="if(this.value==''){this.value='Enter Your Email Here'}">
+                              <div class="clear"><a href="#" class="fleft">Unsubscribe</a><a href="#" class="fright" onClick="document.getElementById('newsletter-form').submit()">Submit</a></div>
+                          </div>
+                      </fieldset>
+                  </form>-->
+                <h2>@ViewRes.Resource.Fresh<span>@ViewRes.Resource.news</span></h2>
+                @{
 
-    <div class="container">
-      
-        @*  <div class="hero-unit">
-            <h1>Marketing stuff!</h1>
-
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-
-            <a href="#" class="btn btn-large btn-success">Get Started</a>
+                  @*  @Html.Action("_PartialLayoutNews", "Home")*@
+                }
+            </aside>
+            <!-- content -->
+            <section id="content">
+                @RenderBody()
+            </section>
         </div>
-
-
-        <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("О программе", "About", "Home")</li>
-                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
-                </ul>*@
-
-        @RenderBody()
     </div>
-            <div class="container body-content">
-                <hr />
-                <footer>
-                    <p>&copy; @DateTime.Now.Year – Курсовой проект Банашко Александра по дисциплине "Веб-технологии"</p>
-                </footer>
-            </div>
+    <!-- footer -->
+    <footer>
 
-            @Scripts.Render("~/bundles/jquery")
-            @Scripts.Render("~/bundles/bootstrap")
-            @RenderSection("scripts", required: false)
+        <div class="container">
+            <div class="inside">
+                <div class="wrapper">
+                    <div class="fleft"><span>@DateTime.Now.Year</span></div>
+                    <div class="aligncenter">
+                        <p>&copy; – Курсовой проект Банашко Александра по дисциплине "Веб-технологии"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
 
 <script>
-     function menuInit() {
-         var dropdown = document.getElementById("dropdown-item");
-         var submenu = document.getElementById("submenu");
+    function menuInit() {
+        var dropdown = document.getElementById("dropdown-item");
+        var submenu = document.getElementById("submenu");
 
-         dropdown.onmouseover = popOutMenu;
-         dropdown.onmouseout = hideDropdown;
+        dropdown.onmouseover = popOutMenu;
+        dropdown.onmouseout = hideDropdown;
 
-         submenu.onmouseover = popOutMenu;
-         submenu.onmouseout = hideDropdown;
-     }
+        submenu.onmouseover = popOutMenu;
+        submenu.onmouseout = hideDropdown;
+    }
 
-     function popOutMenu() {
-         submenu.className = "show-submenu";
-     }
+    function popOutMenu() {
+        submenu.className = "show-submenu";
+    }
 
-     function hideDropdown() {
-         submenu.className = "hide-submenu";
-     }
+    function hideDropdown() {
+        submenu.className = "hide-submenu";
+    }
 </script>
