@@ -134,7 +134,7 @@ SXE = {
 SXE.focusElement = SXE.inst.selection.getNode();
 
 SXE.initElementDialog = function(element_name) {
-	addClassesToList('class', 'xhtmlxtras_styles');
+	addGroupsToList('class', 'xhtmlxtras_styles');
 	TinyMCE_EditableSelects.init();
 
 	element_name = element_name.toLowerCase();

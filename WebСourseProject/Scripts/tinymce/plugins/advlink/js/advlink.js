@@ -16,7 +16,7 @@ function preinit() {
 function changeClass() {
 	var f = document.forms[0];
 
-	f.classes.value = getSelectValue(f, 'classlist');
+	f.Groups.value = getSelectValue(f, 'classlist');
 }
 
 function init() {
@@ -99,7 +99,7 @@ function init() {
 		setFormValue('onkeydown', inst.dom.getAttrib(elm, 'onkeydown'));
 		setFormValue('onkeyup', inst.dom.getAttrib(elm, 'onkeyup'));
 		setFormValue('target', inst.dom.getAttrib(elm, 'target'));
-		setFormValue('classes', inst.dom.getAttrib(elm, 'class'));
+		setFormValue('Groups', inst.dom.getAttrib(elm, 'class'));
 
 		// Parse onclick data
 		if (onclick != null && onclick.indexOf('window.open') != -1)
@@ -116,12 +116,12 @@ function init() {
 		if (href.charAt(0) == '#')
 			selectByValue(formObj, 'anchorlist', href);
 
-		addClassesToList('classlist', 'advlink_styles');
+		addGroupsToList('classlist', 'advlink_styles');
 
 		selectByValue(formObj, 'classlist', inst.dom.getAttrib(elm, 'class'), true);
 		selectByValue(formObj, 'targetlist', inst.dom.getAttrib(elm, 'target'), true);
 	} else
-		addClassesToList('classlist', 'advlink_styles');
+		addGroupsToList('classlist', 'advlink_styles');
 }
 
 function checkPrefix(n) {
@@ -507,7 +507,7 @@ function getLinkListHTML(elm_id, target_form_element, onchange_func) {
 }
 
 function getTargetListHTML(elm_id, target_form_element) {
-	var targets = tinyMCEPopup.getParam('theme_advanced_link_targets', '').split(';');
+	var targets = tinyMCEPopup.getParam('Header_advanced_link_targets', '').split(';');
 	var html = '';
 
 	html += '<select id="' + elm_id + '" name="' + elm_id + '" onchange="this.form.' + target_form_element + '.value=';

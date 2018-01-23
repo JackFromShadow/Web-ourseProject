@@ -1,0 +1,123 @@
+﻿@model IEnumerable<WebСourseProject.Models.Timetable>
+@{
+    ViewBag.Title = "TimeTables";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    $(document).ready(function () {
+        $("#showTimeTable").click(function () {
+            var GroupId = $("#GroupId").val();
+            var PeriodId = $("#PeriodId").val();
+            for (var i = 1; i < 7; i++)
+                for (var j = 1; j < 8; j++) {
+                    $("[day = '" + i + "' ][lesson = '" + j + "']").html("");
+                }
+            $.post("/Home/getTimetable", { GroupId: GroupId, PeriodId: PeriodId }, function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    $("[day = " + data[i].day + " ][lesson = " + data[i].number + "]").html(
+                        "<span> " + data[i].name + "</span><br>" +
+                        "<span> " + data[i].TeachersName + "</span>");
+                }
+            });
+        });
+        })
+       
+</script>
+<br />
+    <div class="form-inline">
+        <div class="form-group">
+            <label for="GroupId">Группа</label>
+            @Html.DropDownList("GroupId", null, htmlAttributes: new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label for="PeriodId">Выберите период</label>
+            @Html.DropDownList("PeriodId", null, htmlAttributes: new { @class = "form-control" })
+        </div>
+        <button class="btn btn-success" id="showTimeTable">Показать</button>
+    </div>
+<br />
+<table class="table table-bordered text-center" id="timetable" style="table-layout: fixed;">
+    <thead>
+        <tr>
+            <th class="text-center" style="width: 14%">Время </th>
+            <th class="text-center" style="width: 14%">Понедельник </th>
+            <th class="text-center" style="width: 14%">Вторник </th>
+            <th class="text-center" style="width: 14%">Среда</th>
+            <th class="text-center" style="width: 14%">Четверг</th>
+            <th class="text-center" style="width: 14%">Пятница</th>
+            <th class="text-center" style="width: 14%">Суббота</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th class="text-center">08.30 - 10.00 </th>
+            <th class="text-center" name="lesson" day="1" lesson="1"></th>
+            <th class="text-center" name="lesson" day="2" lesson="1"></th>
+            <th class="text-center" name="lesson" day="3" lesson="1"></th>
+            <th class="text-center" name="lesson" day="4" lesson="1"></th>
+            <th class="text-center" name="lesson" day="5" lesson="1"></th>
+            <th class="text-center" name="lesson" day="6" lesson="1"></th>
+
+        </tr>
+        <tr>
+            <th class="text-center">10.10 - 11.40 </th>
+            <th class="text-center" name="lesson" day="1" lesson="2"></th>
+            <th class="text-center" name="lesson" day="2" lesson="2"></th>
+            <th class="text-center" name="lesson" day="3" lesson="2"></th>
+            <th class="text-center" name="lesson" day="4" lesson="2"></th>
+            <th class="text-center" name="lesson" day="5" lesson="2"></th>
+            <th class="text-center" name="lesson" day="6" lesson="2"></th>
+
+        </tr>
+        <tr>
+            <th class="text-center">11.50 - 13.20 </th>
+            <th class="text-center" name="lesson" day="1" lesson="3"></th>
+            <th class="text-center" name="lesson" day="2" lesson="3"></th>
+            <th class="text-center" name="lesson" day="3" lesson="3"></th>
+            <th class="text-center" name="lesson" day="4" lesson="3"></th>
+            <th class="text-center" name="lesson" day="5" lesson="3"></th>
+            <th class="text-center" name="lesson" day="6" lesson="3"></th>
+
+        </tr>
+        <tr>
+            <th class="text-center"> 14.00 - 15.30 </th>
+            <th class="text-center" name="lesson" day="1" lesson="4"></th>
+            <th class="text-center" name="lesson" day="2" lesson="4"></th>
+            <th class="text-center" name="lesson" day="3" lesson="4"></th>
+            <th class="text-center" name="lesson" day="4" lesson="4"></th>
+            <th class="text-center" name="lesson" day="5" lesson="4"></th>
+            <th class="text-center" name="lesson" day="6" lesson="4"></th>
+
+        </tr>
+        <tr>
+            <th class="text-center"> 15.40 - 17.10 </th>
+            <th class="text-center" name="lesson" day="1" lesson="5"></th>
+            <th class="text-center" name="lesson" day="2" lesson="5"></th>
+            <th class="text-center" name="lesson" day="3" lesson="5"></th>
+            <th class="text-center" name="lesson" day="4" lesson="5"></th>
+            <th class="text-center" name="lesson" day="5" lesson="5"></th>
+            <th class="text-center" name="lesson" day="6" lesson="5"></th>
+
+        </tr>
+        <tr>
+            <th class="text-center">17.20 - 18.50 </th>
+            <th class="text-center" name="lesson" day="1" lesson="6"></th>
+            <th class="text-center" name="lesson" day="2" lesson="6"></th>
+            <th class="text-center" name="lesson" day="3" lesson="6"></th>
+            <th class="text-center" name="lesson" day="4" lesson="6"></th>
+            <th class="text-center" name="lesson" day="5" lesson="6"></th>
+            <th class="text-center" name="lesson" day="6" lesson="6"></th>
+
+        </tr>
+        <tr>
+            <th class="text-center"> 19.00 - 20.20 </th>
+            <th class="text-center" name="lesson" day="1" lesson="7"></th>
+            <th class="text-center" name="lesson" day="2" lesson="7"></th>
+            <th class="text-center" name="lesson" day="3" lesson="7"></th>
+            <th class="text-center" name="lesson" day="4" lesson="7"></th>
+            <th class="text-center" name="lesson" day="5" lesson="7"></th>
+            <th class="text-center" name="lesson" day="6" lesson="7"></th>
+
+        </tr>
+    </tbody>
+</table>

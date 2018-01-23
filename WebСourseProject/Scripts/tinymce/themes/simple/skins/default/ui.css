@@ -20,7 +20,7 @@
 /* Separator */
 .defaultSimpleSkin .mceSeparator {display:block; background:url(../../img/icons.gif) -180px 0; width:2px; height:20px; margin:0 2px 0 4px}
 
-/* Theme */
+/* Header */
 .defaultSimpleSkin span.mce_bold {background-position:0 0}
 .defaultSimpleSkin span.mce_italic {background-position:-60px 0}
 .defaultSimpleSkin span.mce_underline {background-position:-140px 0}

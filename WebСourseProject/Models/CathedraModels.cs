@@ -13,10 +13,18 @@ namespace WebСourseProject.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required]
+        public int number { get; set; }
+
+        public string letter { get; set; }//Буква группы? Символ
+
         public string Group_Name { get; set; }
         public int Count_Of_Student { get; set; }                 
         public ICollection<Student> Students { get; set; }
         public ICollection<Timetable> TimeTables { get; set; }
+        public int? TeacherId { get; set; }
+        [ForeignKey("TeacherId")]
+        public Teacher Teacher { get; set; }
     }
 
     public class Student
@@ -62,7 +70,7 @@ namespace WebСourseProject.Models
         public int Id { get; set; }
         [Required]
         [MaxLength(50)]
-        public string Theme { get; set; }
+        public string Header { get; set; }
         [Required]
         [MaxLength(150)]
         public string ScienceDirection { get; set; }
@@ -135,7 +143,12 @@ namespace WebСourseProject.Models
         public int Id { get; set; }
         [Required]
         public int GroupId { get; set; }
- 
+
+        [Required]
+        public int PeriodId { get; set; }
+
+        [ForeignKey("PeriodId")]
+        public Period Period { get; set; }
 
         [ForeignKey("GroupId")]
         public Group Group { get; set; }
@@ -143,7 +156,7 @@ namespace WebСourseProject.Models
   //      [ForeignKey("PeriodId")]
  //       public Period Period { get; set; }
 
-        IEnumerable<Lesson> Lessons;
+        public IEnumerable<Lesson> Lessons;
     }
 
     public class LessonRequest
@@ -152,19 +165,34 @@ namespace WebСourseProject.Models
         public string teacher { get; set; }
     }
 
-
+    public class Period
+    {
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        public string name { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTime begin { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTime end { get; set; }
+        public ICollection<Timetable> TimeTables { get; set; }
+    }
+    
     public class SiteContext : DbContext
     {
-        public DbSet<Group> Groups { get; set; }
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Topic> Topics { get; set; }
-  //      public DbSet<Period> Periods { get; set; }
-        public DbSet<Timetable> Timetables { get; set; }
-        public DbSet<Teacher> Teachers { get; set; }
-        public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<Group> Groups { get; set; }//группы
+        public DbSet<Student> Students { get; set; }//студенты
+        public DbSet<Topic> Topics { get; set; }//статьи
+        public DbSet<Period> Periods { get; set; }//периоды
+        public DbSet<Timetable> Timetables { get; set; }//Расписания
+        public DbSet<Teacher> Teachers { get; set; }//Преподаватели
+        public DbSet<Lesson> Lessons { get; set; }//Занятия
+
 
         public SiteContext()
-        : base("name=SchoolContext")
+        : base("name=SiteContext")
         {
             Database.SetInitializer<SiteContext>(new CreateDatabaseIfNotExists<SiteContext>());
         }

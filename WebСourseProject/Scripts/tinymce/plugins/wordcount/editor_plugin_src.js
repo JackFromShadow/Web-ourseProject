@@ -27,7 +27,7 @@
 			ed.onPostRender.add(function(ed, cm) {
 				var row, id;
 
-				// Add it to the specified id or the theme advanced path
+				// Add it to the specified id or the Header advanced path
 				id = ed.getParam('wordcount_target_id');
 				if (!id) {
 					row = tinymce.DOM.get(ed.id + '_path_row');

@@ -98,7 +98,7 @@
 					s.height = n.clientHeight - 15;
 					s.fullscreen_is_enabled = true;
 					s.fullscreen_editor_id = ed.id;
-					s.theme_advanced_resizing = false;
+					s.Header_advanced_resizing = false;
 					s.save_onsavecallback = function() {
 						ed.setContent(tinyMCE.get(s.id).getContent());
 						ed.execCommand('mceSave');
@@ -108,8 +108,8 @@
 						s[k] = v;
 					});
 
-					if (s.theme_advanced_toolbar_location === 'external')
-						s.theme_advanced_toolbar_location = 'top';
+					if (s.Header_advanced_toolbar_location === 'external')
+						s.Header_advanced_toolbar_location = 'top';
 
 					t.fullscreenEditor = new tinymce.Editor('mce_fullscreen', s);
 					t.fullscreenEditor.onInit.add(function() {
@@ -130,7 +130,7 @@
 						outerSize = fed.dom.getSize(fed.getContainer().firstChild);
 						innerSize = fed.dom.getSize(fed.getContainer().getElementsByTagName('iframe')[0]);
 
-						fed.theme.resizeTo(vp.w - outerSize.w + innerSize.w, vp.h - outerSize.h + innerSize.h);
+						fed.Header.resizeTo(vp.w - outerSize.w + innerSize.w, vp.h - outerSize.h + innerSize.h);
 					});
 				}
 			});

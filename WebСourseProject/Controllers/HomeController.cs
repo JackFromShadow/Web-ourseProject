@@ -7,12 +7,15 @@ using System.Globalization;
 using System.Collections;
 using System.Web.Security;
 using WebСourseProject.Filters;
+using WebСourseProject.Models;
 
 namespace WebСourseProject.Controllers
 {
     [Culture]
     public class HomeController : Controller
     {
+        private SiteContext db = new SiteContext();
+
         public ActionResult Index()
         {
             return View();
@@ -46,6 +49,69 @@ namespace WebСourseProject.Controllers
             //return PartialView(News);
             return PartialView();
         }
+
+        public ActionResult TimeTables()
+        {
+            var stands = db.Groups.Select(s => new SelectListItem
+            {
+                Value = s.Id.ToString(),
+                Text = s.number + " " + s.letter
+            });
+
+            ViewBag.GroupId = new SelectList(stands, "Value", "Text");
+            ViewBag.PeriodId = new SelectList(db.Periods, "Id", "name");
+            return View();
+        }
+
+        public ActionResult News()
+        {
+            var topics = db.Topics.ToList();
+
+            return View(topics);
+        }
+        public ActionResult Teachers()
+        {
+            var teachers = db.Teachers.ToList();
+
+            return View(teachers);
+        }
+
+        [HttpPost]
+        public JsonResult getTimetable(int GroupId, int PeriodId)
+        {
+            var data = db.Lessons.Where(s => s.timetable.GroupId == GroupId).
+                Where(s => s.timetable.PeriodId == PeriodId).ToList();
+            return Json(data);
+        }
+
+        public ActionResult TopicContent(int id)
+        {
+            var topic = db.Topics.Find(id);
+            ViewBag.content = topic.Content;
+            return View(topic);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public ActionResult ChangeCulture(string lang)
         {

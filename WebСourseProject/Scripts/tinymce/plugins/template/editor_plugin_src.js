@@ -40,7 +40,7 @@
 				each(dom.select('div', o.node), function(e) {
 					if (dom.hasClass(e, 'mceTmpl')) {
 						each(dom.select('*', e), function(e) {
-							if (dom.hasClass(e, ed.getParam('template_mdate_classes', 'mdate').replace(/\s+/g, '|')))
+							if (dom.hasClass(e, ed.getParam('template_mdate_Groups', 'mdate').replace(/\s+/g, '|')))
 								e.innerHTML = t._getDateTime(new Date(), ed.getParam("template_mdate_format", ed.getLang("template.mdate_format")));
 						});
 
@@ -85,15 +85,15 @@
 
 			each(dom.select('*', el), function(n) {
 				// Replace cdate
-				if (hasClass(n, ed.getParam('template_cdate_classes', 'cdate').replace(/\s+/g, '|')))
+				if (hasClass(n, ed.getParam('template_cdate_Groups', 'cdate').replace(/\s+/g, '|')))
 					n.innerHTML = t._getDateTime(new Date(), ed.getParam("template_cdate_format", ed.getLang("template.cdate_format")));
 
 				// Replace mdate
-				if (hasClass(n, ed.getParam('template_mdate_classes', 'mdate').replace(/\s+/g, '|')))
+				if (hasClass(n, ed.getParam('template_mdate_Groups', 'mdate').replace(/\s+/g, '|')))
 					n.innerHTML = t._getDateTime(new Date(), ed.getParam("template_mdate_format", ed.getLang("template.mdate_format")));
 
 				// Replace selection
-				if (hasClass(n, ed.getParam('template_selected_content_classes', 'selcontent').replace(/\s+/g, '|')))
+				if (hasClass(n, ed.getParam('template_selected_content_Groups', 'selcontent').replace(/\s+/g, '|')))
 					n.innerHTML = sel;
 			});
 

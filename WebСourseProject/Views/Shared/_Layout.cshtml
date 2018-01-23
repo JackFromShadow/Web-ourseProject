@@ -21,22 +21,25 @@
         <div class="sidebar">
             <nav id="navbar">
                 <ul id="main-menu">
-                    <li><a href="#" target="_blank"><i class="fa fa-home"></i>Home</a></li>
+                    <a href="#">
+                        Admin Menu.
+                    </a>
+       
+                    <li><a href="#" target="_blank"><i class="fa fa-home"></i></a>@Html.ActionLink("Периоды", "Index", "Periods")</li>
                     <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>@Html.ActionLink("ABOUT US", "About", "Home")</a></li>
-                    <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
-                    <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
-                    <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
-                    <li id="dropdown-item"><a href="#"><i class="fa fa-coffee"></i>Work With Me</a></li>
+                    <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>@Html.ActionLink("Расписания", "Index", "Timetables")</a></li>
+                    <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>@Html.ActionLink("Классы", "Index", "Groups")</a></li>
+                    <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i></a>@Html.ActionLink("Новости", "Index", "Topics")</li>                 
+                    <li><a href="#" target="_blank"><i class="fa fa-quote-left"></i></a>@Html.ActionLink("Преподаватели", "Index", "Teachers")</li>
+                    <li><a href="#" target="_blank"><i class="fa fa-user"></i>Contact</a></li>
+                </ul><!-- main-menu -->
+            </nav><!-- navbar   <li id="dropdown-item"><a href="#"><i class="fa fa-coffee"></i></a></li>
                     <ul id="submenu" class="hide-submenu">
                         <li>AngularJS</li>
                         <li>JavaScript</li>
                         <li>HTML5</li>
                         <li>CSS3</li>
-                    </ul>
-                    <li><a href="#" target="_blank"><i class="fa fa-quote-left"></i>Testimonials</a></li>
-                    <li><a href="#" target="_blank"><i class="fa fa-user"></i>Contact</a></li>
-                </ul><!-- main-menu -->
-            </nav><!-- navbar -->
+                    </ul>-->
         </div>  
     <!-- body -->
     <div class="wrap">

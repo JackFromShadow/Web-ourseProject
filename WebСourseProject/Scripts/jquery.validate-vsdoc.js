@@ -475,7 +475,7 @@ $.extend($.validator, {
 		resetForm: function() {
 			/// <summary>
 			/// Resets the controlled form.
-			/// Resets input fields to their original value (requires form plugin), removes classes
+			/// Resets input fields to their original value (requires form plugin), removes Groups
 			/// indicating invalid elements and hides error messages.
 			/// </summary>
 
@@ -885,8 +885,8 @@ $.extend($.validator, {
 	
 	classRules: function(element) {
 		var rules = {};
-		var classes = $(element).attr('class');
-		classes && $.each(classes.split(' '), function() {
+		var Groups = $(element).attr('class');
+		Groups && $.each(Groups.split(' '), function() {
 			if (this in $.validator.classRuleSettings) {
 				$.extend(rules, $.validator.classRuleSettings[this]);
 			}

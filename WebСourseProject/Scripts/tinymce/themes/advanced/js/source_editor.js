@@ -15,7 +15,7 @@ function onLoadInit() {
 
 	document.getElementById('htmlSource').value = tinyMCEPopup.editor.getContent({source_view : true});
 
-	if (tinyMCEPopup.editor.getParam("theme_advanced_source_editor_wrap", true)) {
+	if (tinyMCEPopup.editor.getParam("Header_advanced_source_editor_wrap", true)) {
 		turnWrapOn();
 		document.getElementById('wraped').checked = true;
 	}

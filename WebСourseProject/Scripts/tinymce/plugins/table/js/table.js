@@ -346,7 +346,7 @@ function init() {
 		formObj.insert.value = inst.getLang('update');
 	}
 
-	addClassesToList('class', "table_styles");
+	addGroupsToList('class', "table_styles");
 	TinyMCE_EditableSelects.init();
 
 	// Update form

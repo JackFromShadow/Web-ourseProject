@@ -12,7 +12,7 @@ var LinkDialog = {
 		var f = document.forms[0], ed = tinyMCEPopup.editor;
 
 		// Setup browse button
-		document.getElementById('hrefbrowsercontainer').innerHTML = getBrowserHTML('hrefbrowser', 'href', 'file', 'theme_advanced_link');
+		document.getElementById('hrefbrowsercontainer').innerHTML = getBrowserHTML('hrefbrowser', 'href', 'file', 'Header_advanced_link');
 		if (isVisible('hrefbrowser'))
 			document.getElementById('href').style.width = '180px';
 
@@ -112,7 +112,7 @@ var LinkDialog = {
 	fillClassList : function(id) {
 		var dom = tinyMCEPopup.dom, lst = dom.get(id), v, cl;
 
-		if (v = tinyMCEPopup.getParam('theme_advanced_styles')) {
+		if (v = tinyMCEPopup.getParam('Header_advanced_styles')) {
 			cl = [];
 
 			tinymce.each(v.split(';'), function(v) {
@@ -121,7 +121,7 @@ var LinkDialog = {
 				cl.push({'title' : p[0], 'class' : p[1]});
 			});
 		} else
-			cl = tinyMCEPopup.editor.dom.getClasses();
+			cl = tinyMCEPopup.editor.dom.getGroups();
 
 		if (cl.length > 0) {
 			lst.options[lst.options.length] = new Option(tinyMCEPopup.getLang('not_set'), '');
@@ -140,7 +140,7 @@ var LinkDialog = {
 		lst.options[lst.options.length] = new Option(tinyMCEPopup.getLang('advanced_dlg.link_target_same'), '_self');
 		lst.options[lst.options.length] = new Option(tinyMCEPopup.getLang('advanced_dlg.link_target_blank'), '_blank');
 
-		if (v = tinyMCEPopup.getParam('theme_advanced_link_targets')) {
+		if (v = tinyMCEPopup.getParam('Header_advanced_link_targets')) {
 			tinymce.each(v.split(','), function(v) {
 				v = v.split('=');
 				lst.options[lst.options.length] = new Option(v[0], v[1]);

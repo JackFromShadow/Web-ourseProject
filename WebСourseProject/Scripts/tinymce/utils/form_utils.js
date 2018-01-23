@@ -8,7 +8,7 @@
  * Contributing: http://tinymce.moxiecode.com/contributing
  */
 
-var themeBaseURL = tinyMCEPopup.editor.baseURI.toAbsolute('themes/' + tinyMCEPopup.getParam("theme"));
+var HeaderBaseURL = tinyMCEPopup.editor.baseURI.toAbsolute('Headers/' + tinyMCEPopup.getParam("Header"));
 
 function getColorPickerHTML(id, target_form_element) {
 	var h = "", dom = tinyMCEPopup.dom;
@@ -112,10 +112,10 @@ function addSelectValue(form_obj, field_name, name, value) {
 	s.options[s.options.length] = o;
 }
 
-function addClassesToList(list_id, specific_option) {
+function addGroupsToList(list_id, specific_option) {
 	// Setup class droplist
 	var styleSelectElm = document.getElementById(list_id);
-	var styles = tinyMCEPopup.getParam('theme_advanced_styles', false);
+	var styles = tinyMCEPopup.getParam('Header_advanced_styles', false);
 	styles = tinyMCEPopup.getParam(specific_option, styles);
 
 	if (styles) {
@@ -132,7 +132,7 @@ function addClassesToList(list_id, specific_option) {
 			}
 		}
 	} else {
-		tinymce.each(tinyMCEPopup.editor.dom.getClasses(), function(o) {
+		tinymce.each(tinyMCEPopup.editor.dom.getGroups(), function(o) {
 			styleSelectElm.options[styleSelectElm.length] = new Option(o.title || o['class'], o['class']);
 		});
 	}

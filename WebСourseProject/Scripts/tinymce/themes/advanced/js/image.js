@@ -12,7 +12,7 @@ var ImageDialog = {
 		var f = document.forms[0], ed = tinyMCEPopup.editor;
 
 		// Setup browse button
-		document.getElementById('srcbrowsercontainer').innerHTML = getBrowserHTML('srcbrowser','src','image','theme_advanced_image');
+		document.getElementById('srcbrowsercontainer').innerHTML = getBrowserHTML('srcbrowser','src','image','Header_advanced_image');
 		if (isVisible('srcbrowser'))
 			document.getElementById('src').style.width = '180px';
 

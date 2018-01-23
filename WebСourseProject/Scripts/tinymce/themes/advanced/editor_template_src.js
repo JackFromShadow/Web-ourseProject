@@ -50,8 +50,8 @@
 				dom.setAttrib(previewElm, name, value);
 		});
 
-		// Add classes to preview element
-		each(fmt.classes, function(value) {
+		// Add Groups to preview element
+		each(fmt.Groups, function(value) {
 			value = removeVars(value);
 
 			if (!dom.hasClass(previewElm, value))
@@ -100,10 +100,10 @@
 		return previewCss;
 	};
 
-	// Tell it to load theme specific language pack(s)
-	tinymce.ThemeManager.requireLangPack('advanced');
+	// Tell it to load Header specific language pack(s)
+	tinymce.HeaderManager.requireLangPack('advanced');
 
-	tinymce.create('tinymce.themes.AdvancedTheme', {
+	tinymce.create('tinymce.Headers.AdvancedHeader', {
 		sizes : [8, 10, 12, 14, 18, 24, 36],
 
 		// Control name lookup, format: title, command
@@ -160,21 +160,21 @@
 
 			// Default settings
 			t.settings = s = extend({
-				theme_advanced_path : true,
-				theme_advanced_toolbar_location : 'bottom',
-				theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect",
-				theme_advanced_buttons2 : "bullist,numlist,|,outdent,indent,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code",
-				theme_advanced_buttons3 : "hr,removeformat,visualaid,|,sub,sup,|,charmap",
-				theme_advanced_blockformats : "p,address,pre,h1,h2,h3,h4,h5,h6",
-				theme_advanced_toolbar_align : "center",
-				theme_advanced_fonts : "Andale Mono=andale mono,times;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Trebuchet MS=trebuchet ms,geneva;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats",
-				theme_advanced_more_colors : 1,
-				theme_advanced_row_height : 23,
-				theme_advanced_resize_horizontal : 1,
-				theme_advanced_resizing_use_cookie : 1,
-				theme_advanced_font_sizes : "1,2,3,4,5,6,7",
-				theme_advanced_font_selector : "span",
-				theme_advanced_show_current_color: 0,
+				Header_advanced_path : true,
+				Header_advanced_toolbar_location : 'bottom',
+				Header_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect",
+				Header_advanced_buttons2 : "bullist,numlist,|,outdent,indent,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code",
+				Header_advanced_buttons3 : "hr,removeformat,visualaid,|,sub,sup,|,charmap",
+				Header_advanced_blockformats : "p,address,pre,h1,h2,h3,h4,h5,h6",
+				Header_advanced_toolbar_align : "center",
+				Header_advanced_fonts : "Andale Mono=andale mono,times;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Trebuchet MS=trebuchet ms,geneva;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats",
+				Header_advanced_more_colors : 1,
+				Header_advanced_row_height : 23,
+				Header_advanced_resize_horizontal : 1,
+				Header_advanced_resizing_use_cookie : 1,
+				Header_advanced_font_sizes : "1,2,3,4,5,6,7",
+				Header_advanced_font_selector : "span",
+				Header_advanced_show_current_color: 0,
 				readonly : ed.settings.readonly
 			}, ed.settings);
 
@@ -182,19 +182,19 @@
 			if (!s.font_size_style_values)
 				s.font_size_style_values = "8pt,10pt,12pt,14pt,18pt,24pt,36pt";
 
-			if (tinymce.is(s.theme_advanced_font_sizes, 'string')) {
+			if (tinymce.is(s.Header_advanced_font_sizes, 'string')) {
 				s.font_size_style_values = tinymce.explode(s.font_size_style_values);
-				s.font_size_classes = tinymce.explode(s.font_size_classes || '');
+				s.font_size_Groups = tinymce.explode(s.font_size_Groups || '');
 
 				// Parse string value
 				o = {};
-				ed.settings.theme_advanced_font_sizes = s.theme_advanced_font_sizes;
-				each(ed.getParam('theme_advanced_font_sizes', '', 'hash'), function(v, k) {
+				ed.settings.Header_advanced_font_sizes = s.Header_advanced_font_sizes;
+				each(ed.getParam('Header_advanced_font_sizes', '', 'hash'), function(v, k) {
 					var cl;
 
 					if (k == v && v >= 1 && v <= 7) {
 						k = v + ' (' + t.sizes[v - 1] + 'pt)';
-						cl = s.font_size_classes[v - 1];
+						cl = s.font_size_Groups[v - 1];
 						v = s.font_size_style_values[v - 1] || (t.sizes[v - 1] + 'pt');
 					}
 
@@ -204,14 +204,14 @@
 					o[k] = cl ? {'class' : cl} : {fontSize : v};
 				});
 
-				s.theme_advanced_font_sizes = o;
+				s.Header_advanced_font_sizes = o;
 			}
 
-			if ((v = s.theme_advanced_path_location) && v != 'none')
-				s.theme_advanced_statusbar_location = s.theme_advanced_path_location;
+			if ((v = s.Header_advanced_path_location) && v != 'none')
+				s.Header_advanced_statusbar_location = s.Header_advanced_path_location;
 
-			if (s.theme_advanced_statusbar_location == 'none')
-				s.theme_advanced_statusbar_location = 0;
+			if (s.Header_advanced_statusbar_location == 'none')
+				s.Header_advanced_statusbar_location = 0;
 
 			if (ed.settings.content_css !== false)
 				ed.contentCSS.push(ed.baseURI.toAbsolute(url + "/skins/" + ed.settings.skin + "/content.css"));
@@ -303,11 +303,11 @@
 			return false;
 		},
 
-		_importClasses : function(e) {
+		_importGroups : function(e) {
 			var ed = this.editor, ctrl = ed.controlManager.get('styleselect');
 
 			if (ctrl.getLength() == 0) {
-				each(ed.dom.getClasses(), function(o, idx) {
+				each(ed.dom.getGroups(), function(o, idx) {
 					var name = 'style_' + idx, fmt;
 
 					fmt = {
@@ -386,14 +386,14 @@
 							ctrl.add(fmt.title);
 					});
 				} else {
-					each(ed.getParam('theme_advanced_styles', '', 'hash'), function(val, key) {
+					each(ed.getParam('Header_advanced_styles', '', 'hash'), function(val, key) {
 						var name, fmt;
 
 						if (val) {
 							name = 'style_' + (counter++);
 							fmt = {
 								inline : 'span',
-								classes : val,
+								Groups : val,
 								selector : '*'
 							};
 
@@ -408,16 +408,16 @@
 				}
 			});
 
-			// Auto import classes if the ctrl box is empty
+			// Auto import Groups if the ctrl box is empty
 			if (ctrl.getLength() == 0) {
 				ctrl.onPostRender.add(function(ed, n) {
 					if (!ctrl.NativeListBox) {
-						Event.add(n.id + '_text', 'focus', t._importClasses, t);
-						Event.add(n.id + '_text', 'mousedown', t._importClasses, t);
-						Event.add(n.id + '_open', 'focus', t._importClasses, t);
-						Event.add(n.id + '_open', 'mousedown', t._importClasses, t);
+						Event.add(n.id + '_text', 'focus', t._importGroups, t);
+						Event.add(n.id + '_text', 'mousedown', t._importGroups, t);
+						Event.add(n.id + '_open', 'focus', t._importGroups, t);
+						Event.add(n.id + '_open', 'mousedown', t._importGroups, t);
 					} else
-						Event.add(n.id, 'focus', t._importClasses, t);
+						Event.add(n.id, 'focus', t._importGroups, t);
 				});
 			}
 
@@ -453,7 +453,7 @@
 			});
 
 			if (c) {
-				each(ed.getParam('theme_advanced_fonts', t.settings.theme_advanced_fonts, 'hash'), function(v, k) {
+				each(ed.getParam('Header_advanced_fonts', t.settings.Header_advanced_fonts, 'hash'), function(v, k) {
 					c.add(ed.translate(k), v, {style : v.indexOf('dings') == -1 ? 'font-family:' + v : ''});
 				});
 			}
@@ -503,7 +503,7 @@
 			}});
 
 			if (c) {
-				each(t.settings.theme_advanced_font_sizes, function(v, k) {
+				each(t.settings.Header_advanced_font_sizes, function(v, k) {
 					var fz = v.fontSize;
 
 					if (fz >= 1 && fz <= 7)
@@ -541,7 +541,7 @@
 			}});
 
 			if (c) {
-				each(t.editor.getParam('theme_advanced_blockformats', t.settings.theme_advanced_blockformats, 'hash'), function(v, k) {
+				each(t.editor.getParam('Header_advanced_blockformats', t.settings.Header_advanced_blockformats, 'hash'), function(v, k) {
 					c.add(t.editor.translate(k != v ? k : fmts[v]), v, {'class' : 'mce_formatPreview mce_' + v, style: function() {
 						return getPreviewCss(t.editor, {block: v});
 					}});
@@ -554,7 +554,7 @@
 		_createForeColorMenu : function() {
 			var c, t = this, s = t.settings, o = {}, v;
 
-			if (s.theme_advanced_more_colors) {
+			if (s.Header_advanced_more_colors) {
 				o.more_colors_func = function() {
 					t._mceColorPicker(0, {
 						color : c.value,
@@ -565,11 +565,11 @@
 				};
 			}
 
-			if (v = s.theme_advanced_text_colors)
+			if (v = s.Header_advanced_text_colors)
 				o.colors = v;
 
-			if (s.theme_advanced_default_foreground_color)
-				o.default_color = s.theme_advanced_default_foreground_color;
+			if (s.Header_advanced_default_foreground_color)
+				o.default_color = s.Header_advanced_default_foreground_color;
 
 			o.title = 'advanced.forecolor_desc';
 			o.cmd = 'ForeColor';
@@ -583,7 +583,7 @@
 		_createBackColorMenu : function() {
 			var c, t = this, s = t.settings, o = {}, v;
 
-			if (s.theme_advanced_more_colors) {
+			if (s.Header_advanced_more_colors) {
 				o.more_colors_func = function() {
 					t._mceColorPicker(0, {
 						color : c.value,
@@ -594,11 +594,11 @@
 				};
 			}
 
-			if (v = s.theme_advanced_background_colors)
+			if (v = s.Header_advanced_background_colors)
 				o.colors = v;
 
-			if (s.theme_advanced_default_background_color)
-				o.default_color = s.theme_advanced_default_background_color;
+			if (s.Header_advanced_default_background_color)
+				o.default_color = s.Header_advanced_default_background_color;
 
 			o.title = 'advanced.backcolor_desc';
 			o.cmd = 'HiliteColor';
@@ -627,13 +627,13 @@
 			n = sc = DOM.add(n, 'table', {role : "presentation", id : ed.id + '_tbl', 'class' : 'mceLayout', cellSpacing : 0, cellPadding : 0});
 			n = tb = DOM.add(n, 'tbody');
 
-			switch ((s.theme_advanced_layout_manager || '').toLowerCase()) {
+			switch ((s.Header_advanced_layout_manager || '').toLowerCase()) {
 				case "rowlayout":
 					ic = t._rowLayout(s, tb, o);
 					break;
 
 				case "customlayout":
-					ic = ed.execCallback("theme_advanced_custom_layout", s, tb, o, p);
+					ic = ed.execCallback("Header_advanced_custom_layout", s, tb, o, p);
 					break;
 
 				default:
@@ -642,19 +642,19 @@
 
 			n = o.targetNode;
 
-			// Add classes to first and last TRs
+			// Add Groups to first and last TRs
 			nl = sc.rows;
 			DOM.addClass(nl[0], 'mceFirst');
 			DOM.addClass(nl[nl.length - 1], 'mceLast');
 
-			// Add classes to first and last TDs
+			// Add Groups to first and last TDs
 			each(DOM.select('tr', tb), function(n) {
 				DOM.addClass(n.firstChild, 'mceFirst');
 				DOM.addClass(n.childNodes[n.childNodes.length - 1], 'mceLast');
 			});
 
-			if (DOM.get(s.theme_advanced_toolbar_container))
-				DOM.get(s.theme_advanced_toolbar_container).appendChild(p);
+			if (DOM.get(s.Header_advanced_toolbar_container))
+				DOM.get(s.Header_advanced_toolbar_container).appendChild(p);
 			else
 				DOM.insertAfter(p, n);
 
@@ -692,7 +692,7 @@
 			if (!ed.getParam('accessibility_focus'))
 				Event.add(DOM.add(p, 'a', {href : '#'}, '<!-- IE -->'), 'focus', function() {tinyMCE.get(ed.id).focus();});
 
-			if (s.theme_advanced_toolbar_location == 'external')
+			if (s.Header_advanced_toolbar_location == 'external')
 				o.deltaHeight = 0;
 
 			t.deltaHeight = o.deltaHeight;
@@ -730,7 +730,7 @@
 
 		getInfo : function() {
 			return {
-				longname : 'Advanced theme',
+				longname : 'Advanced Header',
 				author : 'Moxiecode Systems AB',
 				authorurl : 'http://tinymce.moxiecode.com',
 				version : tinymce.majorVersion + "." + tinymce.minorVersion
@@ -747,16 +747,16 @@
 			var ed = this.editor, s = this.settings, e = DOM.get(ed.id + '_tbl'), ifr = DOM.get(ed.id + '_ifr');
 
 			// Boundery fix box
-			w = Math.max(s.theme_advanced_resizing_min_width || 100, w);
-			h = Math.max(s.theme_advanced_resizing_min_height || 100, h);
-			w = Math.min(s.theme_advanced_resizing_max_width || 0xFFFF, w);
-			h = Math.min(s.theme_advanced_resizing_max_height || 0xFFFF, h);
+			w = Math.max(s.Header_advanced_resizing_min_width || 100, w);
+			h = Math.max(s.Header_advanced_resizing_min_height || 100, h);
+			w = Math.min(s.Header_advanced_resizing_max_width || 0xFFFF, w);
+			h = Math.min(s.Header_advanced_resizing_max_height || 0xFFFF, h);
 
 			// Resize iframe and container
 			DOM.setStyle(e, 'height', '');
 			DOM.setStyle(ifr, 'height', h);
 
-			if (s.theme_advanced_resize_horizontal) {
+			if (s.Header_advanced_resize_horizontal) {
 				DOM.setStyle(e, 'width', '');
 				DOM.setStyle(ifr, 'width', w);
 
@@ -768,7 +768,7 @@
 			}
 
 			// Store away the size
-			if (store && s.theme_advanced_resizing_use_cookie) {
+			if (store && s.Header_advanced_resizing_use_cookie) {
 				Cookie.setHash("TinyMCE_" + ed.id + "_size", {
 					cw : w,
 					ch : h
@@ -787,7 +787,7 @@
 		// Internal functions
 
 		_simpleLayout : function(s, tb, o, p) {
-			var t = this, ed = t.editor, lo = s.theme_advanced_toolbar_location, sl = s.theme_advanced_statusbar_location, n, ic, etb, c;
+			var t = this, ed = t.editor, lo = s.Header_advanced_toolbar_location, sl = s.Header_advanced_statusbar_location, n, ic, etb, c;
 
 			if (s.readonly) {
 				n = DOM.add(tb, 'tr');
@@ -843,7 +843,7 @@
 				t._addStatusBar(tb, o);
 
 			// Create iframe container
-			if (!s.theme_advanced_toolbar_container) {
+			if (!s.Header_advanced_toolbar_container) {
 				n = DOM.add(tb, 'tr');
 				n = ic = DOM.add(n, 'td', {'class' : 'mceIframeContainer'});
 			}
@@ -861,11 +861,11 @@
 		_rowLayout : function(s, tb, o) {
 			var t = this, ed = t.editor, dc, da, cf = ed.controlManager, n, ic, to, a;
 
-			dc = s.theme_advanced_containers_default_class || '';
-			da = s.theme_advanced_containers_default_align || 'center';
+			dc = s.Header_advanced_containers_default_class || '';
+			da = s.Header_advanced_containers_default_align || 'center';
 
-			each(explode(s.theme_advanced_containers || ''), function(c, i) {
-				var v = s['theme_advanced_container_' + c] || '';
+			each(explode(s.Header_advanced_containers || ''), function(c, i) {
+				var v = s['Header_advanced_container_' + c] || '';
 
 				switch (c.toLowerCase()) {
 					case 'mceeditor':
@@ -878,17 +878,17 @@
 						break;
 
 					default:
-						a = (s['theme_advanced_container_' + c + '_align'] || da).toLowerCase();
+						a = (s['Header_advanced_container_' + c + '_align'] || da).toLowerCase();
 						a = 'mce' + t._ufirst(a);
 
 						n = DOM.add(DOM.add(tb, 'tr'), 'td', {
-							'class' : 'mceToolbar ' + (s['theme_advanced_container_' + c + '_class'] || dc) + ' ' + a || da
+							'class' : 'mceToolbar ' + (s['Header_advanced_container_' + c + '_class'] || dc) + ' ' + a || da
 						});
 
 						to = cf.createToolbar("toolbar" + i);
 						t._addControls(v, to);
 						DOM.setHTML(n, to.renderHTML());
-						o.deltaHeight -= s.theme_advanced_row_height;
+						o.deltaHeight -= s.Header_advanced_row_height;
 				}
 			});
 
@@ -898,10 +898,10 @@
 		_addControls : function(v, tb) {
 			var t = this, s = t.settings, di, cf = t.editor.controlManager;
 
-			if (s.theme_advanced_disable && !t._disabled) {
+			if (s.Header_advanced_disable && !t._disabled) {
 				di = {};
 
-				each(explode(s.theme_advanced_disable), function(v) {
+				each(explode(s.Header_advanced_disable), function(v) {
 					di[v] = 1;
 				});
 
@@ -939,35 +939,35 @@
 
 			toolbarGroup = cf.createToolbarGroup('toolbargroup', {
 				'name': ed.getLang('advanced.toolbar'),
-				'tab_focus_toolbar':ed.getParam('theme_advanced_tab_focus_toolbar')
+				'tab_focus_toolbar':ed.getParam('Header_advanced_tab_focus_toolbar')
 			});
 
 			t.toolbarGroup = toolbarGroup;
 
-			a = s.theme_advanced_toolbar_align.toLowerCase();
+			a = s.Header_advanced_toolbar_align.toLowerCase();
 			a = 'mce' + t._ufirst(a);
 
 			n = DOM.add(DOM.add(c, 'tr', {role: 'presentation'}), 'td', {'class' : 'mceToolbar ' + a, "role":"presentation"});
 
 			// Create toolbar and add the controls
-			for (i=1; (v = s['theme_advanced_buttons' + i]); i++) {
+			for (i=1; (v = s['Header_advanced_buttons' + i]); i++) {
 				toolbarsExist = true;
 				tb = cf.createToolbar("toolbar" + i, {'class' : 'mceToolbarRow' + i});
 
-				if (s['theme_advanced_buttons' + i + '_add'])
-					v += ',' + s['theme_advanced_buttons' + i + '_add'];
+				if (s['Header_advanced_buttons' + i + '_add'])
+					v += ',' + s['Header_advanced_buttons' + i + '_add'];
 
-				if (s['theme_advanced_buttons' + i + '_add_before'])
-					v = s['theme_advanced_buttons' + i + '_add_before'] + ',' + v;
+				if (s['Header_advanced_buttons' + i + '_add_before'])
+					v = s['Header_advanced_buttons' + i + '_add_before'] + ',' + v;
 
 				t._addControls(v, tb);
 				toolbarGroup.add(tb);
 
-				o.deltaHeight -= s.theme_advanced_row_height;
+				o.deltaHeight -= s.Header_advanced_row_height;
 			}
 			// Handle case when there are no toolbar buttons and ensure editor height is adjusted accordingly
 			if (!toolbarsExist)
-				o.deltaHeight -= s.theme_advanced_row_height;
+				o.deltaHeight -= s.Header_advanced_row_height;
 			h.push(toolbarGroup.renderHTML());
 			h.push(DOM.createHTML('a', {href : '#', accesskey : 'z', title : ed.getLang("advanced.toolbar_focus"), onfocus : 'tinyMCE.getInstanceById(\'' + ed.id + '\').focus();'}, '<!-- IE -->'));
 			DOM.setHTML(n, h.join(''));
@@ -979,7 +979,7 @@
 			n = DOM.add(tb, 'tr');
 			n = td = DOM.add(n, 'td', {'class' : 'mceStatusbar'}); 
 			n = DOM.add(n, 'div', {id : ed.id + '_path_row', 'role': 'group', 'aria-labelledby': ed.id + '_path_voice'});
-			if (s.theme_advanced_path) {
+			if (s.Header_advanced_path) {
 				DOM.add(n, 'span', {id: ed.id + '_path_voice'}, ed.translate('advanced.path'));
 				DOM.add(n, 'span', {}, ': ');
 			} else {
@@ -987,10 +987,10 @@
 			}
 			
 
-			if (s.theme_advanced_resizing) {
+			if (s.Header_advanced_resizing) {
 				DOM.add(td, 'a', {id : ed.id + '_resize', href : 'javascript:;', onclick : "return false;", 'class' : 'mceResize', tabIndex:"-1"});
 
-				if (s.theme_advanced_resizing_use_cookie) {
+				if (s.Header_advanced_resizing_use_cookie) {
 					ed.onPostRender.add(function() {
 						var o = Cookie.getHash("TinyMCE_" + ed.id + "_size"), c = DOM.get(ed.id + '_tbl');
 
@@ -1109,7 +1109,7 @@
 				c.setActive(!co && !!p && n.className.indexOf('mceItem') == -1);
 
 			if (c = cm.get('styleselect')) {
-				t._importClasses();
+				t._importGroups();
 
 				formatNames = [];
 				each(c.items, function(item) {
@@ -1139,7 +1139,7 @@
 						cl = n.className;
 				}
 
-				if (ed.dom.is(n, s.theme_advanced_font_selector)) {
+				if (ed.dom.is(n, s.Header_advanced_font_selector)) {
 					if (!fz && n.style.fontSize)
 						fz = n.style.fontSize;
 
@@ -1165,7 +1165,7 @@
 			// Select font size
 			if (c = cm.get('fontsizeselect')) {
 				// Use computed style
-				if (s.theme_advanced_runtime_fontsize && !fz && !cl)
+				if (s.Header_advanced_runtime_fontsize && !fz && !cl)
 					fz = ed.dom.getStyle(n, 'fontSize', true);
 
 				c.select(function(v) {
@@ -1177,7 +1177,7 @@
 				});
 			}
 			
-			if (s.theme_advanced_show_current_color) {
+			if (s.Header_advanced_show_current_color) {
 				function updateColor(controlId, color) {
 					if (c = cm.get(controlId)) {
 						if (!color)
@@ -1191,7 +1191,7 @@
 				updateColor('backcolor', bc);
 			}
 
-			if (s.theme_advanced_show_current_color) {
+			if (s.Header_advanced_show_current_color) {
 				function updateColor(controlId, color) {
 					if (c = cm.get(controlId)) {
 						if (!color)
@@ -1206,7 +1206,7 @@
 				updateColor('backcolor', bc);
 			}
 
-			if (s.theme_advanced_path && s.theme_advanced_statusbar_location) {
+			if (s.Header_advanced_path && s.Header_advanced_statusbar_location) {
 				p = DOM.get(ed.id + '_path') || DOM.add(ed.id + '_path_row', 'span', {id : ed.id + '_path'});
 
 				if (t.statusKeyboardNavigation) {
@@ -1296,7 +1296,7 @@
 					ti = na.title;
 					na = na.name;
 
-					//u = "javascript:tinymce.EditorManager.get('" + ed.id + "').theme._sel('" + (de++) + "');";
+					//u = "javascript:tinymce.EditorManager.get('" + ed.id + "').Header._sel('" + (de++) + "');";
 					pi = DOM.create('a', {'href' : "javascript:;", role: 'button', onmousedown : "return false;", title : ti, 'class' : 'mcePath_' + (de++)}, na);
 
 					if (p.hasChildNodes()) {
@@ -1334,7 +1334,7 @@
 				height : 90 + parseInt(ed.getLang('advanced.anchor_delta_height', 0)),
 				inline : true
 			}, {
-				theme_url : this.url
+				Header_url : this.url
 			});
 		},
 
@@ -1347,7 +1347,7 @@
 				height : 265 + parseInt(ed.getLang('advanced.charmap_delta_height', 0)),
 				inline : true
 			}, {
-				theme_url : this.url
+				Header_url : this.url
 			});
 		},
 
@@ -1360,7 +1360,7 @@
 				height : 380,
 				inline : true
 			}, {
-				theme_url : this.url
+				Header_url : this.url
 			});
 		},
 
@@ -1372,7 +1372,7 @@
 				height: 380,
 				inline: true
 			}, {
-				theme_url: this.url
+				Header_url: this.url
 			});
 		},
 
@@ -1390,7 +1390,7 @@
 			}, {
 				input_color : v.color,
 				func : v.func,
-				theme_url : this.url
+				Header_url : this.url
 			});
 		},
 
@@ -1399,13 +1399,13 @@
 
 			ed.windowManager.open({
 				url : this.url + '/source_editor.htm',
-				width : parseInt(ed.getParam("theme_advanced_source_editor_width", 720)),
-				height : parseInt(ed.getParam("theme_advanced_source_editor_height", 580)),
+				width : parseInt(ed.getParam("Header_advanced_source_editor_width", 720)),
+				height : parseInt(ed.getParam("Header_advanced_source_editor_height", 580)),
 				inline : true,
 				resizable : true,
 				maximizable : true
 			}, {
-				theme_url : this.url
+				Header_url : this.url
 			});
 		},
 
@@ -1422,7 +1422,7 @@
 				height : 275 + parseInt(ed.getLang('advanced.image_delta_height', 0)),
 				inline : true
 			}, {
-				theme_url : this.url
+				Header_url : this.url
 			});
 		},
 
@@ -1435,7 +1435,7 @@
 				height : 200 + parseInt(ed.getLang('advanced.link_delta_height', 0)),
 				inline : true
 			}, {
-				theme_url : this.url
+				Header_url : this.url
 			});
 		},
 
@@ -1477,5 +1477,5 @@
 		}
 	});
 
-	tinymce.ThemeManager.add('advanced', tinymce.themes.AdvancedTheme);
+	tinymce.HeaderManager.add('advanced', tinymce.Headers.AdvancedHeader);
 }(tinymce));

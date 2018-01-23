@@ -754,7 +754,7 @@ intellisense.annotate(jQuery.fn, {
   'addClass': function() {
     /// <signature>
     ///   <summary>Adds the specified class(es) to each of the set of matched elements.</summary>
-    ///   <param name="className" type="String">One or more space-separated classes to be added to the class attribute of each matched element.</param>
+    ///   <param name="className" type="String">One or more space-separated Groups to be added to the class attribute of each matched element.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1032,7 +1032,7 @@ intellisense.annotate(jQuery.fn, {
   'class': function() {
     /// <signature>
     ///   <summary>Selects all elements with the given class.</summary>
-    ///   <param name="class" type="String">A class to search for. An element can have multiple classes; only one of them must match.</param>
+    ///   <param name="class" type="String">A class to search for. An element can have multiple Groups; only one of them must match.</param>
     /// </signature>
   },
   'clearQueue': function() {
@@ -2175,12 +2175,12 @@ intellisense.annotate(jQuery.fn, {
   },
   'removeClass': function() {
     /// <signature>
-    ///   <summary>Remove a single class, multiple classes, or all classes from each element in the set of matched elements.</summary>
-    ///   <param name="className" type="String">One or more space-separated classes to be removed from the class attribute of each matched element.</param>
+    ///   <summary>Remove a single class, multiple Groups, or all Groups from each element in the set of matched elements.</summary>
+    ///   <param name="className" type="String">One or more space-separated Groups to be removed from the class attribute of each matched element.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
-    ///   <summary>Remove a single class, multiple classes, or all classes from each element in the set of matched elements.</summary>
+    ///   <summary>Remove a single class, multiple Groups, or all Groups from each element in the set of matched elements.</summary>
     ///   <param name="function(index, class)" type="Function">A function returning one or more space-separated class names to be removed. Receives the index position of the element in the set and the old class value as arguments.</param>
     ///   <returns type="jQuery" />
     /// </signature>
@@ -2473,23 +2473,23 @@ intellisense.annotate(jQuery.fn, {
   },
   'toggleClass': function() {
     /// <signature>
-    ///   <summary>Add or remove one or more classes from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.</summary>
+    ///   <summary>Add or remove one or more Groups from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.</summary>
     ///   <param name="className" type="String">One or more class names (separated by spaces) to be toggled for each element in the matched set.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
-    ///   <summary>Add or remove one or more classes from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.</summary>
+    ///   <summary>Add or remove one or more Groups from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.</summary>
     ///   <param name="className" type="String">One or more class names (separated by spaces) to be toggled for each element in the matched set.</param>
     ///   <param name="switch" type="Boolean">A Boolean (not just truthy/falsy) value to determine whether the class should be added or removed.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
-    ///   <summary>Add or remove one or more classes from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.</summary>
+    ///   <summary>Add or remove one or more Groups from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.</summary>
     ///   <param name="switch" type="Boolean">A boolean value to determine whether the class should be added or removed.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
-    ///   <summary>Add or remove one or more classes from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.</summary>
+    ///   <summary>Add or remove one or more Groups from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.</summary>
     ///   <param name="function(index, class, switch)" type="Function">A function that returns class names to be toggled in the class attribute of each element in the matched set. Receives the index position of the element in the set, the old class value, and the switch as arguments.</param>
     ///   <param name="switch" type="Boolean">A boolean value to determine whether the class should be added or removed.</param>
     ///   <returns type="jQuery" />

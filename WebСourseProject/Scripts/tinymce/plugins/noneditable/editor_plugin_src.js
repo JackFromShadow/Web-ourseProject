@@ -476,7 +476,7 @@
 					ed.onBeforeSetContent.add(convertRegExpsToNonEditable);
 				}
 
-				// Apply contentEditable true/false on elements with the noneditable/editable classes
+				// Apply contentEditable true/false on elements with the noneditable/editable Groups
 				ed.parser.addAttributeFilter('class', function(nodes) {
 					var i = nodes.length, className, node;
 

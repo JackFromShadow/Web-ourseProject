@@ -51,7 +51,7 @@ function writeWindowsMedia(p) {
 function writeEmbed(cls, cb, mt, p) {
 	var h = '', n;
 
-	h += '<object classid="clsid:' + cls + '" codebase="' + cb + '"';
+	h += '<object GroupId="clsid:' + cls + '" codebase="' + cb + '"';
 	h += typeof(p.id) != "undefined" ? 'id="' + p.id + '"' : '';
 	h += typeof(p.name) != "undefined" ? 'name="' + p.name + '"' : '';
 	h += typeof(p.width) != "undefined" ? 'width="' + p.width + '"' : '';

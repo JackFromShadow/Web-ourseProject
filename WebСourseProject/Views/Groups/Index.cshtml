@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WebСourseProject.Models.Group>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            Группа
+        </th>
+        <th>
+            Профиль
+        </th>
+        <th>
+            Руководитель
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.photoPath)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.number) 
+        - 
+            @Html.DisplayFor(modelItem => item.letter)
+            <a href="/Students/Index?GroupId=@Html.DisplayFor(modelItem => item.Id)">Просмотр</a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.profile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Teacher.LastName) 
+            @Html.DisplayFor(modelItem => item.Teacher.FirstName)
+            @Html.DisplayFor(modelItem => item.Teacher.FathersName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.photoPath)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

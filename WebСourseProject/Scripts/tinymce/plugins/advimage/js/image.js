@@ -60,17 +60,17 @@ var ImageDialog = {
 		}
 
 		// Setup browse button
-		document.getElementById('srcbrowsercontainer').innerHTML = getBrowserHTML('srcbrowser','src','image','theme_advanced_image');
+		document.getElementById('srcbrowsercontainer').innerHTML = getBrowserHTML('srcbrowser','src','image','Header_advanced_image');
 		if (isVisible('srcbrowser'))
 			document.getElementById('src').style.width = '260px';
 
 		// Setup browse button
-		document.getElementById('onmouseoversrccontainer').innerHTML = getBrowserHTML('overbrowser','onmouseoversrc','image','theme_advanced_image');
+		document.getElementById('onmouseoversrccontainer').innerHTML = getBrowserHTML('overbrowser','onmouseoversrc','image','Header_advanced_image');
 		if (isVisible('overbrowser'))
 			document.getElementById('onmouseoversrc').style.width = '260px';
 
 		// Setup browse button
-		document.getElementById('onmouseoutsrccontainer').innerHTML = getBrowserHTML('outbrowser','onmouseoutsrc','image','theme_advanced_image');
+		document.getElementById('onmouseoutsrccontainer').innerHTML = getBrowserHTML('outbrowser','onmouseoutsrc','image','Header_advanced_image');
 		if (isVisible('outbrowser'))
 			document.getElementById('onmouseoutsrc').style.width = '260px';
 
@@ -266,7 +266,7 @@ var ImageDialog = {
 	fillClassList : function(id) {
 		var dom = tinyMCEPopup.dom, lst = dom.get(id), v, cl;
 
-		if (v = tinyMCEPopup.getParam('theme_advanced_styles')) {
+		if (v = tinyMCEPopup.getParam('Header_advanced_styles')) {
 			cl = [];
 
 			tinymce.each(v.split(';'), function(v) {
@@ -275,7 +275,7 @@ var ImageDialog = {
 				cl.push({'title' : p[0], 'class' : p[1]});
 			});
 		} else
-			cl = tinyMCEPopup.editor.dom.getClasses();
+			cl = tinyMCEPopup.editor.dom.getGroups();
 
 		if (cl.length > 0) {
 			lst.options.length = 0;

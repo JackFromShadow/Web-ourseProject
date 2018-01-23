@@ -37,7 +37,7 @@ function init() {
 	setFormValue('onkeyup', dom.getAttrib(elm, 'onkeyup'));
 	className = dom.getAttrib(elm, 'class');
 
-	addClassesToList('classlist', 'advlink_styles');
+	addGroupsToList('classlist', 'advlink_styles');
 	selectByValue(f, 'classlist', className, true);
 
 	TinyMCE_EditableSelects.init();

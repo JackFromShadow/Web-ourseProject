@@ -548,11 +548,11 @@
 			]);
 
 			// Class attribute options are: leave all as-is ("none"), remove all ("all"), or remove only those starting with mso ("mso").
-			// Note:-  paste_strip_class_attributes: "none", verify_css_classes: true is also a good variation.
+			// Note:-  paste_strip_class_attributes: "none", verify_css_Groups: true is also a good variation.
 			stripClass = getParam(ed, "paste_strip_class_attributes");
 
 			if (stripClass !== "none") {
-				function removeClasses(match, g1) {
+				function removeGroups(match, g1) {
 						if (stripClass === "all")
 							return '';
 
@@ -565,8 +565,8 @@
 						return cls.length ? ' class="' + cls.join(" ") + '"' : '';
 				};
 
-				h = h.replace(/ class="([^"]+)"/gi, removeClasses);
-				h = h.replace(/ class=([\-\w]+)/gi, removeClasses);
+				h = h.replace(/ class="([^"]+)"/gi, removeGroups);
+				h = h.replace(/ class=([\-\w]+)/gi, removeGroups);
 			}
 
 			// Remove spans option

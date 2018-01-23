@@ -1,0 +1,26 @@
+﻿@model WebСourseProject.Models.Topic
+@{
+    ViewBag.Title = "TopicContent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TopicContent</h2>
+
+<div class="container-fluid">
+    <p>
+        <h1 class="text-center form-inline">
+            <span id="title">@Html.DisplayFor(model => model.Header)</span>
+        </h1>
+    </p>
+
+    <p><img src="@Html.DisplayFor(model => model.imgPath)" height="500" class="center-block"> </p>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <p class="text-justify">
+                @Html.Raw(ViewBag.content)
+            </p>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+ </div>

@@ -112,7 +112,7 @@
 
 			ed.onPreInit.add(function() {
 				// Allow video elements
-				ed.schema.addValidElements('object[id|style|width|height|classid|codebase|*],param[name|value],embed[id|style|width|height|type|src|*],video[*],audio[*],source[*]');
+				ed.schema.addValidElements('object[id|style|width|height|GroupId|codebase|*],param[name|value],embed[id|style|width|height|type|src|*],video[*],audio[*],source[*]');
 
 				// Convert video elements to image placeholder
 				ed.parser.addNodeFilter('object,embed,video,audio,script,iframe', function(nodes) {
@@ -136,8 +136,8 @@
 
 			ed.onInit.add(function() {
 				// Display "media" instead of "img" in element path
-				if (ed.theme && ed.theme.onResolveName) {
-					ed.theme.onResolveName.add(function(theme, path_object) {
+				if (ed.Header && ed.Header.onResolveName) {
+					ed.Header.onResolveName.add(function(Header, path_object) {
 						if (path_object.name === 'img' && ed.dom.hasClass(path_object.node, 'mceItemMedia'))
 							path_object.name = 'media';
 					});
@@ -253,7 +253,7 @@
 				align : data.align,
 				hspace : data.hspace,
 				vspace : data.vspace,
-				src : self.editor.theme.url + '/img/trans.gif',
+				src : self.editor.Header.url + '/img/trans.gif',
 				'class' : 'mceItemMedia mceItem' + self.getType(data.type).name,
 				'data-mce-json' : JSON.serialize(data, "'")
 			});
@@ -312,7 +312,7 @@
 		getType : function(value) {
 			var i, values, typeItem;
 
-			// Find type by checking the classes
+			// Find type by checking the Groups
 			values = tinymce.explode(value, ' ');
 			for (i = 0; i < values.length; i++) {
 				typeItem = this.lookup[values[i]];
@@ -560,7 +560,7 @@
 					object.append(param);
 				}
 
-				// Setup add type and classid if strict is disabled
+				// Setup add type and GroupId if strict is disabled
 				if (this.editor.getParam('media_strict', true)) {
 					object.attr({
 						data: data.params.src,
@@ -568,7 +568,7 @@
 					});
 				} else {
 					object.attr({
-						classid: "clsid:" + typeItem.clsids[0],
+						GroupId: "clsid:" + typeItem.clsids[0],
 						codebase: typeItem.codebase
 					});
 
@@ -692,7 +692,7 @@
 			// Setup new image object
 			img = new Node('img', 1);
 			img.attr({
-				src : this.editor.theme.url + '/img/trans.gif'
+				src : this.editor.Header.url + '/img/trans.gif'
 			});
 
 			// Video element
@@ -831,7 +831,7 @@
 			}
 
 			if (object && !type)
-				type = (lookupAttribute(object, 'clsid') || lookupAttribute(object, 'classid') || lookupAttribute(object, 'type') || {}).name;
+				type = (lookupAttribute(object, 'clsid') || lookupAttribute(object, 'GroupId') || lookupAttribute(object, 'type') || {}).name;
 
 			if (embed && !type)
 				type = (lookupAttribute(embed, 'type') || lookupExtension(data.params.src) || {}).name;

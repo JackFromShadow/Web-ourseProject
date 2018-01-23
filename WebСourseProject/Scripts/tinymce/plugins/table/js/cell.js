@@ -31,7 +31,7 @@ function init() {
 	var scope = ed.dom.getAttrib(tdElm, 'scope');
 
 	// Setup form
-	addClassesToList('class', 'table_cell_styles');
+	addGroupsToList('class', 'table_cell_styles');
 	TinyMCE_EditableSelects.init();
 
 	if (!ed.dom.hasClass(tdElm, 'mceSelected')) {

@@ -1512,7 +1512,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 		// Catch class over-caching
 		div.firstChild.className = "i";
 		// Support: Opera<10
-		// Catch gEBCN failure to find non-leading classes
+		// Catch gEBCN failure to find non-leading Groups
 		return div.getElementsByClassName("i").length === 2;
 	});
 
@@ -2159,7 +2159,7 @@ Expr = Sizzle.selectors = {
 
 		"PSEUDO": function( pseudo, argument ) {
 			// pseudo-class names are case-insensitive
-			// http://www.w3.org/TR/selectors/#pseudo-classes
+			// http://www.w3.org/TR/selectors/#pseudo-Groups
 			// Prioritize by case sensitivity in case custom pseudos are added with uppercase letters
 			// Remember that setFilters inherits from pseudos
 			var args,
@@ -3802,7 +3802,7 @@ jQuery.extend({
 		var noData = elem.nodeName && jQuery.noData[ elem.nodeName.toLowerCase() ];
 
 		// nodes accept data unless otherwise specified; rejection can be conditional
-		return !noData || noData !== true && elem.getAttribute("classid") === noData;
+		return !noData || noData !== true && elem.getAttribute("GroupId") === noData;
 	}
 });
 
@@ -4094,7 +4094,7 @@ jQuery.fn.extend({
 	},
 
 	addClass: function( value ) {
-		var classes, elem, cur, clazz, j,
+		var Groups, elem, cur, clazz, j,
 			i = 0,
 			len = this.length,
 			proceed = typeof value === "string" && value;
@@ -4107,7 +4107,7 @@ jQuery.fn.extend({
 
 		if ( proceed ) {
 			// The disjunction here is for better compressibility (see removeClass)
-			classes = ( value || "" ).match( core_rnotwhite ) || [];
+			Groups = ( value || "" ).match( core_rnotwhite ) || [];
 
 			for ( ; i < len; i++ ) {
 				elem = this[ i ];
@@ -4118,7 +4118,7 @@ jQuery.fn.extend({
 
 				if ( cur ) {
 					j = 0;
-					while ( (clazz = classes[j++]) ) {
+					while ( (clazz = Groups[j++]) ) {
 						if ( cur.indexOf( " " + clazz + " " ) < 0 ) {
 							cur += clazz + " ";
 						}
@@ -4133,7 +4133,7 @@ jQuery.fn.extend({
 	},
 
 	removeClass: function( value ) {
-		var classes, elem, cur, clazz, j,
+		var Groups, elem, cur, clazz, j,
 			i = 0,
 			len = this.length,
 			proceed = arguments.length === 0 || typeof value === "string" && value;
@@ -4144,7 +4144,7 @@ jQuery.fn.extend({
 			});
 		}
 		if ( proceed ) {
-			classes = ( value || "" ).match( core_rnotwhite ) || [];
+			Groups = ( value || "" ).match( core_rnotwhite ) || [];
 
 			for ( ; i < len; i++ ) {
 				elem = this[ i ];
@@ -4156,7 +4156,7 @@ jQuery.fn.extend({
 
 				if ( cur ) {
 					j = 0;
-					while ( (clazz = classes[j++]) ) {
+					while ( (clazz = Groups[j++]) ) {
 						// Remove *all* instances
 						while ( cur.indexOf( " " + clazz + " " ) >= 0 ) {
 							cur = cur.replace( " " + clazz + " ", " " );
@@ -6397,7 +6397,7 @@ function fixCloneNodeIssues( src, dest ) {
 		disableScript( dest ).text = src.text;
 		restoreScript( dest );
 
-	// IE6-10 improperly clones children of object elements using classid.
+	// IE6-10 improperly clones children of object elements using GroupId.
 	// IE10 throws NoModificationAllowedError if parent is null, #12132.
 	} else if ( nodeName === "object" ) {
 		if ( dest.parentNode ) {

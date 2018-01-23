@@ -11,10 +11,10 @@
 (function() {
 	var DOM = tinymce.DOM;
 
-	// Tell it to load theme specific language pack(s)
-	tinymce.ThemeManager.requireLangPack('simple');
+	// Tell it to load Header specific language pack(s)
+	tinymce.HeaderManager.requireLangPack('simple');
 
-	tinymce.create('tinymce.themes.SimpleTheme', {
+	tinymce.create('tinymce.Headers.SimpleHeader', {
 		init : function(ed, url) {
 			var t = this, states = ['Bold', 'Italic', 'Underline', 'Strikethrough', 'InsertUnorderedList', 'InsertOrderedList'], s = ed.settings;
 
@@ -72,7 +72,7 @@
 
 		getInfo : function() {
 			return {
-				longname : 'Simple theme',
+				longname : 'Simple Header',
 				author : 'Moxiecode Systems AB',
 				authorurl : 'http://tinymce.moxiecode.com',
 				version : tinymce.majorVersion + "." + tinymce.minorVersion
@@ -80,5 +80,5 @@
 		}
 	});
 
-	tinymce.ThemeManager.add('simple', tinymce.themes.SimpleTheme);
+	tinymce.HeaderManager.add('simple', tinymce.Headers.SimpleHeader);
 })();

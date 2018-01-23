@@ -19,7 +19,21 @@ namespace WebСourseProject.Models
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
+    {   /*
+        public DbSet<Group> Groups { get; set; }//группы
+        public DbSet<Student> Students { get; set; }//студенты
+        public DbSet<Topic> Topics { get; set; }//статьи
+        public DbSet<Period> Periods { get; set; }//периоды
+        public DbSet<Timetable> Timetables { get; set; }//Расписания
+        public DbSet<Teacher> Teachers { get; set; }//Преподаватели
+        public DbSet<Lesson> Lessons { get; set; }//Занятия
+
+        public SiteContext()
+        : base("name=SiteContext")
+        {
+            Database.SetInitializer<SiteContext>(new CreateDatabaseIfNotExists<SiteContext>());
+        }
+        */
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
