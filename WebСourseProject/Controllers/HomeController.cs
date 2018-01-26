@@ -50,7 +50,7 @@ namespace WebСourseProject.Controllers
         public ActionResult _PartialLayoutNews()
         {
              var News = db.Topics.ToList(); 
-            //var News = work.AllNews2();
+           //  var News = db.Topics.AllNews2();
 
             //return PartialView(News);
             return PartialView();
