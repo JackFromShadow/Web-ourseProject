@@ -14,12 +14,12 @@ namespace WebСourseProject.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public int number { get; set; }
+        public int number { get; set; }//Номер, тут все понятно
 
         public string letter { get; set; }//Буква группы? Символ
 
-        public string Group_Name { get; set; }
-        public int Count_Of_Student { get; set; }                 
+ //       public string Group_Name { get; set; }
+ //       public int Count_Of_Student { get; set; }                 
         public ICollection<Student> Students { get; set; }
         public ICollection<Timetable> TimeTables { get; set; }
         public int? TeacherId { get; set; }

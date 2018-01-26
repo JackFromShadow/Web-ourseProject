@@ -1,0 +1,18 @@
+﻿@model IQueryable <WebСourseProject.Models.Topic>
+
+@{
+    ViewBag.Title = "TopicPartial";
+}
+
+<ul class="news">
+    @foreach (var item in Model)
+    {
+        <li>
+            <strong>@Html.DisplayFor((modelItem => item.published))</strong>
+            <h4><a href="#">@Html.DisplayFor(modelItem => item.Header)</a></h4>
+            @Html.DisplayFor(modelItem => item.Content)
+        </li>
+    }
+</ul>
+
+

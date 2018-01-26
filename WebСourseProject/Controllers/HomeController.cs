@@ -41,9 +41,15 @@ namespace WebСourseProject.Controllers
             //return PartialView(News);
             return PartialView();
         }
+
+        public IQueryable<Topic> AllNews2()
+        {
+            return db.Set<Topic>().Where(u => u.Type == "Новость").Take(2);//Ура, корректный вывод новостей!
+        }
+    
         public ActionResult _PartialLayoutNews()
         {
-            // var News = db.News.ToList(); 
+             var News = db.Topics.ToList(); 
             //var News = work.AllNews2();
 
             //return PartialView(News);
