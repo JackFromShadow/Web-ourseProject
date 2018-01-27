@@ -4,7 +4,6 @@ $activeColor: #27ae60; //green $darkenColor: darken($activeColor, 20%);
 $background: #3498db;
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    background: #fff;
     padding-left: 15px;
     padding-right: 15px;
 }

@@ -5,6 +5,7 @@
     padding-bottom: 20px;
     min-width: 420px;
     max-width: 1200px;
+    padding-left: 270px;
 }
 /* 
 .container {
@@ -117,6 +118,7 @@ body {
 
 /* Global Structure ============================================================= */
 .container {
+    background-color: #fff;
     margin: 0 auto;
     width: 940px;
     overflow: hidden;

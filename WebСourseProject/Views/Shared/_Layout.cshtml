@@ -12,11 +12,9 @@
     <script src="~/Scripts/ckeditor/ckeditor.js"></script>
     <script src="~/Scripts/ckeditor/adapters/jquery.js"></script>
 </head>
-<body onload="menuInit();">
-
-   
-   @* @if (User.IsInRole("Admin")) <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
-    {*@
+<body onload="menuInit();">@*<script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>*@
+    @if (User.IsInRole("Admin"))
+    {
         <input type="checkbox" id="hmt" class="hidden-menu-ticker">
         <label class="btn-menu" for="hmt">
             <span class="first"></span>
@@ -28,15 +26,14 @@
                 <ul id="main-menu">
                     <a href="#">
                         Admin Menu.
-                    </a>
-       
+                    </a>     
                     <li><a href="#" target="_blank"><i class="fa fa-home"></i></a>@Html.ActionLink("Периоды", "Index", "Periods")</li>
-                    <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>@Html.ActionLink("ABOUT US", "About", "Home")</a></li>
+                    <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>@Html.ActionLink("Роли", "Index", "Roles")</a></li>
                     <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>@Html.ActionLink("Расписания", "Index", "Timetables")</a></li>
-                    <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>@Html.ActionLink("Классы", "Index", "Groups")</a></li>
+                    <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>@Html.ActionLink("Группы", "Index", "Groups")</a></li>
                     <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i></a>@Html.ActionLink("Новости", "Index", "Topics")</li>                 
                     <li><a href="#" target="_blank"><i class="fa fa-quote-left"></i></a>@Html.ActionLink("Преподаватели", "Index", "Teachers")</li>
-                    <li><a href="#" target="_blank"><i class="fa fa-user"></i>Contact</a></li>
+                    <li><a href="#" target="_blank"><i class="fa fa-home"></i></a>@Html.ActionLink("Cтуденты", "Index", "Students")</li>
                 </ul><!-- main-menu -->
             </nav><!-- navbar   <li id="dropdown-item"><a href="#"><i class="fa fa-coffee"></i></a></li>
                     <ul id="submenu" class="hide-submenu">
@@ -45,7 +42,7 @@
                         <li>HTML5</li>
                         <li>CSS3</li>
                     </ul>-->
-        </div>  
+        </div>  }
     <!-- body -->
     <div class="wrap">
         <!-- header -->
@@ -53,12 +50,13 @@
             <div class="container">
                 <h1><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.IndexTitle1, "Index", "Home")</a></h1>
                 <form id="search-form"></form>
-                <nav>
-                    <ul>
-                        <li class="m1">@Html.ActionLink("Русский", "ChangeCulture", "Home", new { lang = "ru", returnUrl = this.Request.RawUrl }, null)</a></li>
-                        <li class="m2">@Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en", returnUrl = this.Request.RawUrl }, null)</a></li>
-                    </ul>
-                </nav>
+                    <nav align="right">
+                        <ul>
+                            <li class="m1">@Html.ActionLink("Русский", "ChangeCulture", "Home", new { lang = "ru", returnUrl = this.Request.RawUrl }, null)</a></li>
+                            <li class="m2">@Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en", returnUrl = this.Request.RawUrl }, null)</a></li>
+                        </ul>
+                    </nav>
+                
                 @*Html.Partial("_LoginPartialUser", "Account")*@
             </div>
         </header>
@@ -66,7 +64,7 @@
             <!--Боковое меню. Главное меню?-->
             <aside>
                 <h3>Меню</h3>
-                <ul class="categories">
+                <ul class="categories"> 
                     <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.TitleMainPage, "Index", "Home")</a></span></li>
                     <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuNews, "News", "News")</a></span></li>
                     @*<li><span><a href="#" target="_blank">@Html.ActionLink("Архив публикаций", "About", "Home")</a></span></li>*@
@@ -77,9 +75,8 @@
                     @if (User.IsInRole("User, ContentManager"))
                     {
                     <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuTeachers, "TeachersView", "Home")</a></span></li>}
-                    @if (User.IsInRole("ContentManager"))
-                    {
-                    <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuSiteMap, "About", "Home")</a></span></li>}
+                    @if (User.IsInRole("ContentManager, Admin"))
+                    {<li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuSiteMap, "SiteMap", "Home")</a></span></li>}
                     <li class="last"><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuAbout, "About", "Home")</a></span></li>
                 </ul>
                 <!--  <form action="" id="newsletter-form">
@@ -91,46 +88,29 @@
                           </div>
                       </fieldset>
                   </form>-->
-                <h2>@ViewRes.Resource.Fresh<span>@ViewRes.Resource.news</span></h2>
-               @* @{
+              
+               @* @{  <h2>@ViewRes.Resource.Fresh<span>@ViewRes.Resource.news</span></h2>
 
         @Html.Action("_PartialLayoutNews", "Home")
     }*@
             </aside>
             <!-- content -->
             <section id="content">
-                @RenderBody()
-                <div class="material-body">
-
-                    <div class="material-text">
-
-<textarea class="material-inner-text"></textarea>
-
-                    </div>
-
-                </div>
+                @RenderBody()              
             </section>
-            <div class="material-body">
-                
-                <div class="material-text">
-                    
-<textarea class="material-inner-text"></textarea>
-                    
-                </div>
-                
-            </div>
+           <!--
             <section id="editor">
                 <textarea id="editor">TEXT_IN_TEXTAREA</textarea>
             </section>
             
-            <p id="editor"></p>
+
             <script type="text/javascript">
                     $(function () {
 
                     $('.material-inner-text').ckeditor();
 
                 });</script>
-
+            -->
             <script type="text/javascript" src="~/Scripts/tinymce/tiny_mce.js">
 
             </script>

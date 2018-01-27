@@ -30,7 +30,7 @@ namespace WebСourseProject
                       "~/Scripts/respond.js"));
 
                bundles.Add(new StyleBundle("~/Content/css").Include(
-                           "~/Content/bootstrapCW.css",
+                           "~/Content/bootstrap.css",
                            "~/Content/site.css",
                            "~/Content/simple-sidebar.css",
                            "~/Content/stylesheet.css"));

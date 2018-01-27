@@ -88,7 +88,7 @@ namespace ViewRes {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на This site was created by students Banashko Alexander, Antipenko Vasily, Gonchar Alexei..
+        ///   Ищет локализованную строку, похожую на This site was created by students Banashko Alexander..
         /// </summary>
         public static string IndexFixedArticle {
             get {

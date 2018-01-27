@@ -8,8 +8,19 @@
     <h2>@ViewBag.Title.</h2>
     <h3>@ViewBag.Message</h3>
 
-    <p>Use this area to provide additional information.</p>
+    <p>Sitemap and About Us</p>
+    <ul class="categories">
+        <li><a href="#" target="_blank"><i class="fa fa-home"></i></a>@Html.ActionLink("Периоды", "Index", "Periods")</li>
+        <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>@Html.ActionLink("Роли", "Index", "Roles")</a></li>
+        <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>@Html.ActionLink("Расписания", "Index", "Timetables")</a></li>
+        <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>@Html.ActionLink("Группы", "Index", "Groups")</a></li>
+        <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i></a>@Html.ActionLink("Новости", "Index", "Topics")</li>
+        <li><a href="#" target="_blank"><i class="fa fa-quote-left"></i></a>@Html.ActionLink("Преподаватели", "Index", "Teachers")</li>
+        <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.TitleMainPage, "Index", "Home")</a></span></li>
+    </ul>
+    <h2>Fresh <span>News</span></h2>
 
+    <!-- content -->
     <div class="aboutYandexmap">
         <p>
             <h3>Где мы находимся:</h3>
